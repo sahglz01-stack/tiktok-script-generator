@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scriptify.ai — Premium Storyboard Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Ambient background glow elements -->
+  <div class="glow-bg">
+    <div class="glow-1"></div>
+    <div class="glow-2"></div>
+  </div>
+
+  <div class="app-container">
+    <!-- Navigation Bar -->
+    <nav class="nav-bar glass-card">
+      <div class="nav-left">
+        <svg class="brand-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg>
+        <span class="logo-text">Scriptify<span class="gradient-text">.ai</span></span>
+      </div>
+      <div class="nav-center">
+        <button class="nav-link active" data-tab="workspace" id="navWorkspaceBtn">Workspace</button>
+        <button class="nav-link" data-tab="guide" id="navGuideBtn">How to Use</button>
+        <button class="nav-link" data-tab="pricing" id="navPricingBtn">Pricing</button>
+      </div>
+      <div class="nav-right">
+        <!-- Language Switcher Toggle -->
+        <button class="lang-switch-btn" id="langSwitchBtn">
+          <span class="lang-label">TH</span>
+          <svg class="globe-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- SECTION 1: WORKSPACE VIEW -->
+    <div id="tab-workspace" class="tab-view active">
+      <!-- Header -->
+      <header class="app-header">
+        <div class="brand-badge" id="txtBadge">PRODUCTIVITY TOOL</div>
+        <p class="subtitle" id="txtSubtitle">Convert any e-commerce product into high-converting viral video scripts instantly.</p>
+      </header>
+
+      <!-- Main Workspace -->
+      <main class="workspace">
+        <!-- Left Panel: Input Form -->
+        <section class="input-panel glass-card">
+          <div class="panel-header">
+            <span class="step-indicator">01</span>
+            <h2 class="panel-title" id="txtPanelTitle1">Product Blueprint</h2>
+          </div>
+          
+          <div class="input-group">
+            <label for="productUrl" id="lblProductUrl">E-commerce Product URL</label>
+            <div class="input-wrapper">
+              <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+              <input type="url" id="productUrl" placeholder="https://shopee.co.th/product/..." autocomplete="off">
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label for="productDetails" id="lblProductDetails">Key Features & Selling Points</label>
+            <textarea id="productDetails" rows="7" placeholder="E.g., 9D surround sound stereo, 5-year warranty, Cvc8.0 noise cancellation, 10-hour battery life..."></textarea>
+            <div class="char-counter" id="txtCharCounter">Paste text description or bullet points</div>
+          </div>
+
+          <div class="input-group">
+            <label for="scriptStyle" id="lblScriptStyle">Script Tone & Narrative Archetype</label>
+            <div class="select-wrapper">
+              <select id="scriptStyle">
+                <option value="energetic" id="optEnergetic">⚡ Fast-Paced & Energetic (High Hype)</option>
+                <option value="comedy" id="optComedy">😂 Relatable & Funny (Humor-first)</option>
+                <option value="storytelling" id="optStorytelling">📖 Narrative & Vlog Style (Social Proof)</option>
+                <option value="painpoint" id="optPainpoint">🩹 Problem & Solution (High Conversion)</option>
+                <option value="aesthetic" id="optAesthetic">🌿 Minimalist & Lo-Fi (Chill/Visuals)</option>
+              </select>
+            </div>
+          </div>
+
+          <button id="generateBtn" class="btn btn-primary">
+            <span class="btn-text" id="txtBtnGenerate">Generate Storyboard</span>
+            <svg class="sparkle-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m11.314 11.314l.707-.707M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/></svg>
+            <div class="spinner hidden"></div>
+          </button>
+        </section>
+
+        <!-- Right Panel: Creative Output -->
+        <section class="output-panel glass-card">
+          <div class="panel-header-row">
+            <div class="panel-header">
+              <span class="step-indicator">02</span>
+              <h2 class="panel-title" id="txtPanelTitle2">Production Script</h2>
+            </div>
+            <button id="copyBtn" class="btn btn-secondary hidden">
+              <svg class="copy-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              <span class="copy-text" id="txtBtnCopy">Copy Script</span>
+            </button>
+          </div>
+
+          <!-- Empty State -->
+          <div id="outputPlaceholder" class="placeholder-view">
+            <div class="icon-circle">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><line x1="10" y1="9" x2="8" y2="9"></line></svg>
+            </div>
+            <h3 id="txtPlaceholderTitle">Awaiting blueprint...</h3>
+            <p id="txtPlaceholderDesc">Provide product features on the left and generate a production-ready marketing script.</p>
+          </div>
+
+          <!-- Actual Output -->
+          <div id="outputContent" class="script-content hidden">
+            <!-- Hook Card -->
+            <div class="hook-box shadow-card">
+              <div class="section-tag" id="tagHook">
+                <span class="dot green-dot"></span>
+                THE HOOK (0-3s)
+              </div>
+              <p id="scriptHook" class="hook-text"></p>
+            </div>
+
+            <!-- Video Body Timeline -->
+            <div class="timeline-container">
+              <div class="section-tag" id="tagBody">
+                <span class="dot blue-dot"></span>
+                STORYBOARD TIMELINE
+              </div>
+              <div id="timelineSteps" class="timeline-steps">
+                <!-- Steps dynamically injected -->
+              </div>
+            </div>
+
+            <!-- CTA Card -->
+            <div class="cta-box shadow-card">
+              <div class="section-tag" id="tagCta">
+                <span class="dot gold-dot"></span>
+                CALL TO ACTION (CTA)
+              </div>
+              <p id="scriptCta" class="cta-text"></p>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- SECTION 2: HOW TO USE / GUIDE VIEW -->
+    <div id="tab-guide" class="tab-view glass-card">
+      <h2 class="view-title" id="txtGuideTitle">How to Use Scriptify.ai</h2>
+      <p class="view-subtitle" id="txtGuideSubtitle">Follow these 4 simple steps to write viral video campaigns.</p>
+
+      <div class="guide-steps">
+        <div class="guide-card">
+          <div class="guide-num">1</div>
+          <h3 id="txtGuideStep1Title">Paste Product Details</h3>
+          <p id="txtGuideStep1Desc">Provide as many key features, technical details, and benefits of your product as possible. The more detail, the sharper the script.</p>
+        </div>
+        <div class="guide-card">
+          <div class="guide-num">2</div>
+          <h3 id="txtGuideStep2Title">Select Tone & Style</h3>
+          <p id="txtGuideStep2Desc">Choose the narrative style that matches your audience. Use "Relatable" for TikTok trends or "Problem & Solution" for high conversion ads.</p>
+        </div>
+        <div class="guide-card">
+          <div class="guide-num">3</div>
+          <h3 id="txtGuideStep3Title">Review Storyboard</h3>
+          <p id="txtGuideStep3Desc">Look at the structured output. Follow the "Visual" cues for camera placement and the "Audio" cues for sound effects during video recording.</p>
+        </div>
+        <div class="guide-card">
+          <div class="guide-num">4</div>
+          <h3 id="txtGuideStep4Title">Copy & Record</h3>
+          <p id="txtGuideStep4Desc">Click the Copy button to capture the formatted script with visual tags. Paste it into your teleprompter app or notes and start recording!</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 3: PRICING VIEW -->
+    <div id="tab-pricing" class="tab-view glass-card">
+      <h2 class="view-title" id="txtPricingTitle">Simple, Transparent Pricing</h2>
+      <p class="view-subtitle" id="txtPricingSubtitle">Start generating scripts for free, upgrade as you grow.</p>
+
+      <div class="pricing-grid">
+        <!-- Free Plan -->
+        <div class="pricing-card">
+          <div class="plan-name">Free Plan</div>
+          <div class="plan-price">$0</div>
+          <p class="plan-desc" id="txtFreeDesc">Perfect for testing the tool and getting comfortable with AI script writing.</p>
+          <ul class="plan-features">
+            <li id="featFree1">3 scripts generation per day</li>
+            <li id="featFree2">Gemini 2.5 Flash access</li>
+            <li>Basic styles included</li>
+            <li>Copy storyboard format</li>
+          </ul>
+          <button class="btn btn-secondary plan-btn" id="txtFreeBtn">Current Plan</button>
+        </div>
+
+        <!-- Creator Plan -->
+        <div class="pricing-card featured">
+          <div class="popular-badge">POPULAR</div>
+          <div class="plan-name">Creator Pro</div>
+          <div class="plan-price">$9 <span class="period">/ month</span></div>
+          <p class="plan-desc" id="txtCreatorDesc">For professional creators and sellers looking to publish multiple videos daily.</p>
+          <ul class="plan-features">
+            <li id="featPro1">Unlimited script generations</li>
+            <li id="featPro2">Priority API access (high speed)</li>
+            <li>All narrative archetypes unlocked</li>
+            <li>Priority email support</li>
+            <li>Commercial license</li>
+          </ul>
+          <button class="btn btn-primary plan-btn" id="txtProBtn">Upgrade to Pro</button>
+        </div>
+
+        <!-- Agency Plan -->
+        <div class="pricing-card">
+          <div class="plan-name">Agency Suite</div>
+          <div class="plan-price">$29 <span class="period">/ month</span></div>
+          <p class="plan-desc" id="txtAgencyDesc">For businesses and marketing agencies managing multiple brands.</p>
+          <ul class="plan-features">
+            <li>Everything in Creator Pro</li>
+            <li>Multi-user team sharing</li>
+            <li>Advanced custom branding</li>
+            <li>API access for bulk generation</li>
+            <li>Dedicated account manager</li>
+          </ul>
+          <button class="btn btn-secondary plan-btn" id="txtAgencyBtn">Contact Sales</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // --- LANGUAGE & TRANSLATION DICTIONARY ---
+    let currentLang = 'EN'; // EN or TH
+
+    const translations = {
+      EN: {
+        navWorkspace: "Workspace",
+        navGuide: "How to Use",
+        navPricing: "Pricing",
+        badge: "PRODUCTIVITY TOOL",
+        subtitle: "Convert any e-commerce product into high-converting viral video scripts instantly.",
+        panelTitle1: "Product Blueprint",
+        lblProductUrl: "E-commerce Product URL",
+        lblProductDetails: "Key Features & Selling Points",
+        txtCharCounter: "Paste text description or bullet points",
+        lblScriptStyle: "Script Tone & Narrative Archetype",
+        optEnergetic: "⚡ Fast-Paced & Energetic (High Hype)",
+        optComedy: "😂 Relatable & Funny (Humor-first)",
+        optStorytelling: "📖 Narrative & Vlog Style (Social Proof)",
+        optPainpoint: "🩹 Problem & Solution (High Conversion)",
+        optAesthetic: "🌿 Minimalist & Lo-Fi (Chill/Visuals)",
+        btnGenerate: "Generate Storyboard",
+        panelTitle2: "Production Script",
+        btnCopy: "Copy Script",
+        placeholderTitle: "Awaiting blueprint...",
+        placeholderDesc: "Provide product features on the left and generate a production-ready marketing script.",
+        tagHook: "THE HOOK (0-3s)",
+        tagBody: "STORYBOARD TIMELINE",
+        tagCta: "CALL TO ACTION (CTA)",
+        guideTitle: "How to Use Scriptify.ai",
+        guideSubtitle: "Follow these 4 simple steps to write viral video campaigns.",
+        guideStep1Title: "Paste Product Details",
+        guideStep1Desc: "Provide as many key features, technical details, and benefits of your product as possible. The more detail, the sharper the script.",
+        guideStep2Title: "Select Tone & Style",
+        guideStep2Desc: "Choose the narrative style that matches your audience. Use 'Relatable' for TikTok trends or 'Problem & Solution' for high conversion ads.",
+        guideStep3Title: "Review Storyboard",
+        guideStep3Desc: "Look at the structured output. Follow the 'Visual' cues for camera placement and the 'Audio' cues for sound effects during video recording.",
+        guideStep4Title: "Copy & Record",
+        guideStep4Desc: "Click the Copy button to capture the formatted script with visual tags. Paste it into your teleprompter app or notes and start recording!",
+        pricingTitle: "Simple, Transparent Pricing",
+        pricingSubtitle: "Start generating scripts for free, upgrade as you grow.",
+        freeDesc: "Perfect for testing the tool and getting comfortable with AI script writing.",
+        featFree1: "3 scripts generation per day",
+        featFree2: "Gemini 2.5 Flash access",
+        freeBtn: "Current Plan",
+        creatorDesc: "For professional creators and sellers looking to publish multiple videos daily.",
+        featPro1: "Unlimited script generations",
+        featPro2: "Priority API access (high speed)",
+        proBtn: "Upgrade to Pro",
+        agencyDesc: "For businesses and marketing agencies managing multiple brands.",
+        agencyBtn: "Contact Sales"
+      },
+      TH: {
+        navWorkspace: "พื้นที่ทำงาน",
+        navGuide: "วิธีใช้งาน",
+        navPricing: "อัตราค่าบริการ",
+        badge: "เครื่องมือเพิ่มยอดขาย",
+        subtitle: "แปลงข้อมูลรายละเอียดสินค้าให้กลายเป็นสคริปต์วิดีโอขายดีบน TikTok และ Reels ทันที",
+        panelTitle1: "ข้อมูลต้นแบบสินค้า",
+        lblProductUrl: "ลิงก์หน้าสินค้า (ถ้ามี)",
+        lblProductDetails: "คุณสมบัติเด่นและจุดขายสำคัญ (จำเป็น)",
+        txtCharCounter: "พิมพ์หรือคัดลอกรายละเอียดสินค้า/ฟีเจอร์ลงในช่องนี้",
+        lblScriptStyle: "อารมณ์และสไตล์การนำเสนอของสคริปต์",
+        optEnergetic: "⚡ สนุกสนานและมีพลัง (เน้นกระตุ้นอารมณ์)",
+        optComedy: "😂 เข้าถึงง่ายและตลกขบขัน (เน้นความฮาและเทรนด์)",
+        optStorytelling: "📖 เล่าเรื่อง / สไตล์ Vlog (เน้นรีวิวเหมือนใช้จริง)",
+        optPainpoint: "🩹 เจาะปมและเสนอทางแก้ (เน้นการปิดการขายสูง)",
+        optAesthetic: "🌿 มินิมอลและเอสเธติก (เน้นภาพสวย สบายๆ ชิลๆ)",
+        btnGenerate: "สร้างบอร์ดสคริปต์ AI ✨",
+        panelTitle2: "บทสคริปต์วิดีโอที่ได้",
+        btnCopy: "คัดลอกสคริปต์ 📋",
+        placeholderTitle: "กำลังรอข้อมูลสินค้า...",
+        placeholderDesc: "กรอกข้อมูลรายละเอียดสินค้าด้านซ้ายและกดสร้างสคริปต์เพื่อเริ่มทำงาน",
+        tagHook: "ประโยคสะกดใจ (0-3 วินาทีแรก)",
+        tagBody: "ไทม์ไลน์ภาพและคำพูดผู้บรรยาย",
+        tagCta: "ประโยคปิดการขาย (Call to Action)",
+        guideTitle: "วิธีใช้งาน Scriptify.ai",
+        guideSubtitle: "ทำตาม 4 ขั้นตอนง่ายๆ เพื่อสร้างแคมเปญวิดีโอให้เป็นไวรัล",
+        guideStep1Title: "1. วางข้อมูลสินค้า",
+        guideStep1Desc: "กรอกรายละเอียด จุดเด่น หรือข้อมูลเฉพาะทางของสินค้าให้มากที่สุด ยิ่งละเอียด AI จะเขียนบทได้เฉียบขาดมากขึ้น",
+        guideStep2Title: "2. เลือกสไตล์และอารมณ์",
+        guideStep2Desc: "เลือกสไตล์ให้เหมาะกับกลุ่มเป้าหมาย เช่น ใช้แนว 'ตลกขบขัน' สำหรับเกาะเทรนด์ หรือแนว 'เจาะปมปัญหา' เพื่อขายของขายดี",
+        guideStep3Title: "3. ตรวจสอบรายละเอียดบท",
+        guideStep3Desc: "ดูไทม์ไลน์ที่ AI สร้างให้ ทำตามช่อง 'Visual' เพื่อจัดมุมกล้อง และดูช่อง 'Audio' สำหรับจังหวะใส่เสียงเอฟเฟกต์ระหว่างถ่ายทำ",
+        guideStep4Title: "4. คัดลอกและอัดคลิป",
+        guideStep4Desc: "กดปุ่มคัดลอกบทสคริปต์ที่จัดฟอร์แมตแล้ว นำไปวางในแอปอ่านสคริปต์ (Teleprompter) หรือโน้ตมือถือ แล้วเริ่มถ่ายคลิปได้เลย!",
+        pricingTitle: "ราคาแพ็คเกจที่โปร่งใสและเข้าใจง่าย",
+        pricingSubtitle: "เริ่มต้นสร้างสคริปต์ฟรี และอัปเกรดเพื่อเพิ่มขีดความสามารถเมื่อธุรกิจเติบโต",
+        freeDesc: "เหมาะสำหรับการทดลองใช้งานและคุ้นเคยกับระบบเขียนบท AI",
+        featFree1: "สร้างสคริปต์ฟรี 3 ครั้งต่อวัน",
+        featFree2: "ใช้งานโมเดล Gemini 2.5 Flash",
+        freeBtn: "แพ็คเกจปัจจุบัน",
+        creatorDesc: "สำหรับนักสร้างคอนเทนต์มืออาชีพและพ่อค้าออนไลน์ที่ต้องการลงคลิปวิดีโอวันละหลายๆ คลิป",
+        featPro1: "สร้างสคริปต์ได้ไม่จำกัดจำนวนครั้ง",
+        featPro2: "ลำดับความสำคัญ API สูงสุด (เจนเร็วสุด)",
+        proBtn: "อัปเกรดเป็น Pro",
+        agencyDesc: "สำหรับธุรกิจขนาดกลางและบริษัทเอเจนซี่โฆษณาที่ดูแลร้านค้าหลายๆ แบรนด์",
+        agencyBtn: "ติดต่อทีมขาย"
+      }
+    };
+
+    function updateLanguage(lang) {
+      const dict = translations[lang];
+      
+      // Nav links
+      document.getElementById('navWorkspaceBtn').textContent = dict.navWorkspace;
+      document.getElementById('navGuideBtn').textContent = dict.navGuide;
+      document.getElementById('navPricingBtn').textContent = dict.navPricing;
+
+      // Workspace View
+      document.getElementById('txtBadge').textContent = dict.badge;
+      document.getElementById('txtSubtitle').textContent = dict.subtitle;
+      document.getElementById('txtPanelTitle1').textContent = dict.panelTitle1;
+      document.getElementById('lblProductUrl').textContent = dict.lblProductUrl;
+      document.getElementById('lblProductDetails').textContent = dict.lblProductDetails;
+      document.getElementById('txtCharCounter').textContent = dict.txtCharCounter;
+      document.getElementById('lblScriptStyle').textContent = dict.lblScriptStyle;
+      document.getElementById('optEnergetic').textContent = dict.optEnergetic;
+      document.getElementById('optComedy').textContent = dict.optComedy;
+      document.getElementById('optStorytelling').textContent = dict.optStorytelling;
+      document.getElementById('optPainpoint').textContent = dict.optPainpoint;
+      document.getElementById('optAesthetic').textContent = dict.optAesthetic;
+      document.getElementById('txtBtnGenerate').textContent = dict.btnGenerate;
+      document.getElementById('txtPanelTitle2').textContent = dict.panelTitle2;
+      document.getElementById('txtBtnCopy').textContent = dict.btnCopy;
+      document.getElementById('txtPlaceholderTitle').textContent = dict.placeholderTitle;
+      document.getElementById('txtPlaceholderDesc').textContent = dict.placeholderDesc;
+      
+      // Tags
+      document.getElementById('tagHook').innerHTML = `<span class="dot green-dot"></span>${dict.tagHook}`;
+      document.getElementById('tagBody').innerHTML = `<span class="dot blue-dot"></span>${dict.tagBody}`;
+      document.getElementById('tagCta').innerHTML = `<span class="dot gold-dot"></span>${dict.tagCta}`;
+
+      // Guide View
+      document.getElementById('txtGuideTitle').textContent = dict.guideTitle;
+      document.getElementById('txtGuideSubtitle').textContent = dict.guideSubtitle;
+      document.getElementById('txtGuideStep1Title').textContent = dict.guideStep1Title;
+      document.getElementById('txtGuideStep1Desc').textContent = dict.guideStep1Desc;
+      document.getElementById('txtGuideStep2Title').textContent = dict.guideStep2Title;
+      document.getElementById('txtGuideStep2Desc').textContent = dict.guideStep2Desc;
+      document.getElementById('txtGuideStep3Title').textContent = dict.guideStep3Title;
+      document.getElementById('txtGuideStep3Desc').textContent = dict.guideStep3Desc;
+      document.getElementById('txtGuideStep4Title').textContent = dict.guideStep4Title;
+      document.getElementById('txtGuideStep4Desc').textContent = dict.guideStep4Desc;
+
+      // Pricing View
+      document.getElementById('txtPricingTitle').textContent = dict.pricingTitle;
+      document.getElementById('txtPricingSubtitle').textContent = dict.pricingSubtitle;
+      document.getElementById('txtFreeDesc').textContent = dict.freeDesc;
+      document.getElementById('featFree1').textContent = dict.featFree1;
+      document.getElementById('featFree2').textContent = dict.featFree2;
+      document.getElementById('txtFreeBtn').textContent = dict.freeBtn;
+      document.getElementById('txtCreatorDesc').textContent = dict.creatorDesc;
+      document.getElementById('featPro1').textContent = dict.featPro1;
+      document.getElementById('featPro2').textContent = dict.featPro2;
+      document.getElementById('txtProBtn').textContent = dict.proBtn;
+      document.getElementById('txtAgencyDesc').textContent = dict.agencyDesc;
+      document.getElementById('txtAgencyBtn').textContent = dict.agencyBtn;
+    }
+
+    // Toggle button listener
+    const langSwitchBtn = document.getElementById('langSwitchBtn');
+    const langLabel = langSwitchBtn.querySelector('.lang-label');
+
+    langSwitchBtn.addEventListener('click', () => {
+      if (currentLang === 'EN') {
+        currentLang = 'TH';
+        langLabel.textContent = 'EN';
+      } else {
+        currentLang = 'EN';
+        langLabel.textContent = 'TH';
+      }
+      updateLanguage(currentLang);
+    });
+
+    // --- TAB TOGGLE CONTROLLER ---
+    const navLinks = document.querySelectorAll('.nav-link');
+    const tabViews = document.querySelectorAll('.tab-view');
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        // Remove active class from links
+        navLinks.forEach(item => item.classList.remove('active'));
+        // Add active to current link
+        link.classList.add('active');
+
+        // Hide all views
+        tabViews.forEach(view => view.classList.remove('active'));
+        // Show current view
+        const targetTab = link.getAttribute('data-tab');
+        document.getElementById(`tab-${targetTab}`).classList.add('active');
+      });
+    });
+
+    // --- SCRIPT GENERATION & COPY FUNCTIONALITY ---
+    const generateBtn = document.getElementById('generateBtn');
+    const btnText = generateBtn.querySelector('.btn-text');
+    const spinner = generateBtn.querySelector('.spinner');
+    const sparkleIcon = generateBtn.querySelector('.sparkle-icon');
+    
+    const productUrl = document.getElementById('productUrl');
+    const productDetails = document.getElementById('productDetails');
+    const scriptStyle = document.getElementById('scriptStyle');
+    
+    const outputPlaceholder = document.getElementById('outputPlaceholder');
+    const outputContent = document.getElementById('outputContent');
+    const scriptHook = document.getElementById('scriptHook');
+    const timelineSteps = document.getElementById('timelineSteps');
+    const scriptCta = document.getElementById('scriptCta');
+    const copyBtn = document.getElementById('copyBtn');
+
+    let currentScriptData = null;
+
+    generateBtn.addEventListener('click', async () => {
+      const details = productDetails.value.trim();
+      const url = productUrl.value.trim();
+
+      if (!details) {
+        alert(currentLang === 'EN' ? 'Please provide some product features.' : 'กรุณากรอกข้อมูลสินค้าหรือจุดเด่น');
+        return;
+      }
+
+      // Loading state
+      generateBtn.disabled = true;
+      btnText.textContent = currentLang === 'EN' ? 'Analyzing details...' : 'กำลังวิเคราะห์สินค้า...';
+      sparkleIcon.classList.add('hidden');
+      spinner.classList.remove('hidden');
+
+      try {
+        const response = await fetch('/api/generate-script', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            productUrl: url,
+            productDetails: details,
+            scriptStyle: scriptStyle.value
+          })
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to connect to the generator service. Verify your API Key is valid.');
+        }
+
+        const data = await response.json();
+        currentScriptData = data;
+        renderScript(data);
+      } catch (error) {
+        alert('Error: ' + error.message);
+      } finally {
+        generateBtn.disabled = false;
+        btnText.textContent = currentLang === 'EN' ? 'Generate Storyboard' : 'สร้างบอร์ดสคริปต์ AI ✨';
+        sparkleIcon.classList.remove('hidden');
+        spinner.classList.add('hidden');
+      }
+    });
+
+    function renderScript(data) {
+      outputPlaceholder.classList.add('hidden');
+      outputContent.classList.remove('hidden');
+      copyBtn.classList.remove('hidden');
+
+      scriptHook.textContent = data.hook || '';
+      scriptCta.textContent = data.cta || '';
+
+      timelineSteps.innerHTML = '';
+
+      if (data.body && Array.isArray(data.body)) {
+        data.body.forEach((step, index) => {
+          const stepEl = document.createElement('div');
+          stepEl.className = 'timeline-step';
+          stepEl.style.animationDelay = `${index * 0.1}s`;
+          
+          stepEl.innerHTML = `
+            <div class="step-num">${index + 1}</div>
+            <div class="step-details">
+              <div class="step-meta">
+                <span class="step-badge visual-badge">
+                  <svg class="meta-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+                  Visual: ${step.visual || 'Show product'}
+                </span>
+                <span class="step-badge audio-badge">
+                  <svg class="meta-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+                  Audio: ${step.audio || '[Upbeat background music]'}
+                </span>
+              </div>
+              <p class="step-speech">"${step.speech || ''}"</p>
+            </div>
+          `;
+          timelineSteps.appendChild(stepEl);
+        });
+      }
+    }
+
+    copyBtn.addEventListener('click', () => {
+      if (!currentScriptData) return;
+
+      let scriptText = `🎬 TIKTOK/REELS PRODUCTION SCRIPT 🎬\n\n`;
+      scriptText += `🪝 HOOK (First 3s):\n"${currentScriptData.hook}"\n\n`;
+      scriptText += `📝 VIDEO BODY TIMELINE:\n`;
+      
+      currentScriptData.body.forEach((step, index) => {
+        scriptText += `${index + 1}. [Visual: ${step.visual}] [Audio: ${step.audio}]\n   Speech: "${step.speech}"\n\n`;
+      });
+
+      scriptText += `🎯 CALL TO ACTION (CTA):\n"${currentScriptData.cta}"`;
+
+      navigator.clipboard.writeText(scriptText).then(() => {
+        const copyTextEl = copyBtn.querySelector('.copy-text');
+        const originalText = copyTextEl.textContent;
+        copyTextEl.textContent = currentLang === 'EN' ? 'Copied! ✅' : 'คัดลอกแล้ว! ✅';
+        copyBtn.classList.add('btn-copied');
+        
+        setTimeout(() => {
+          copyTextEl.textContent = originalText;
+          copyBtn.classList.remove('btn-copied');
+        }, 2000);
+      }).catch(err => {
+        alert('Failed to copy script: ' + err);
+      });
+    });
+  </script>
+</body>
+</html>
